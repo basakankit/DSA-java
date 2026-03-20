@@ -274,3 +274,35 @@ class Solution {
     }
 }
 ```
+
+8. Longest Subarray with sum K: Given an array arr[] containing integers and an integer k, your task is to find the length of the longest subarray where the sum of its elements is equal to the given value k. If there is no subarray with sum equal to k, return 0.  
+   eg.   
+Input: arr[] = [10, 5, 2, 7, 1, -10], k = 15
+Output: 6
+Explanation: Subarrays with sum = 15 are [5, 2, 7, 1], [10, 5] and [10, 5, 2, 7, 1, -10]. The length of the longest subarray with a sum of 15 is 6.
+
+Brute Force - O(n^2)
+
+```java
+class Solution {
+    public int longestSubarray(int[] arr, int k) {
+        // code here
+        int maxlen=0;
+        int n=arr.length;
+        
+        for(int i=0;i<n;i++){
+            int sum=0;
+            for(int j=i;j<n;j++){
+                sum+=arr[j];
+                if(sum==k){
+                    maxlen=Math.max(maxlen,j-i+1);
+                }
+            }
+        }
+        return maxlen;
+    }
+}
+```
+Optimized with HashMap and prefixSum
+
+
